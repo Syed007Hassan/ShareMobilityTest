@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import baseUrl from '../contant/baseUrl';
 
 function UserDetails({ userId }) {
   const [user, setUser] = useState(null);
@@ -7,7 +8,7 @@ function UserDetails({ userId }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/user/findUserById/${userId}`);
+        const response = await axios.get(`${baseUrl}user/findUserById/${userId}`);
         setUser(response.data);
       } catch (error) {
         console.error('Error fetching data: ', error);
